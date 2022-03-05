@@ -1,9 +1,11 @@
 using NUnit.Framework;
 using HolidaySearcher.Search;
+using HolidaySearcher.Search.SearchParameters;
+using System;
 
 namespace HolidaySearcher.Search.Tests
 {
-    public class Tests
+    public class SampleTests
     {
         [Test]
         [TestCase("MAN", "AGP", "2023-07-01", 7, 2, 9)]
@@ -12,10 +14,16 @@ namespace HolidaySearcher.Search.Tests
         public void GivenSampleTestCases_WhenSearchIsCalled_ThenTheBestHolidayIsReturned(string depart, string destination, string departureDate, int duration, int expectedFlightId, int expectedHotelId)
         {
             // Given
-            ISearch holidaySearch = new Search();
-
+            var holidaySearch = new HolidaySearch();
+            var holidayParams = new HolidayParameters
+            {
+                Departure = depart,
+                Destination = destination,
+                DepartureDate = DateTime.Parse(departureDate),
+                Duration = duration
+            };
             // When
-            var bestHoliday = holidaySearch.SearchHoliday(depart, destination,  departureDate, duration);
+            var bestHoliday = holidaySearch.Search(holidayParams);
 
             // Then
             Assert.That(bestHoliday, Is.Not.Null);
