@@ -1,4 +1,4 @@
-﻿using HolidaySearcher.Search.SearchParameters;
+using HolidaySearcher.Search.SearchParameters;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace HolidaySearcher.Search.Tests
         [TestCase("LGW", "AGP", "2023-07-01", 2)]
         [TestCase("LGW", "AGP", "2023-07-01", 2)]
         [TestCase("MAN", "AGP", "2023-10-25", 1)]
-        public void GivenSpecificFlightParameters_WhenSearchIsCalled_ThenTheBestFlightIsReturned(string departure, string destination, string date, int expectedMatches)
+        public void GivenSpecificFlightParameters_WhenSearchIsCalled_ThenAllValidFlightIsReturned(string departure, string destination, string date, int expectedMatches)
         {
             // Given
             var fParams = new FlightParameters
