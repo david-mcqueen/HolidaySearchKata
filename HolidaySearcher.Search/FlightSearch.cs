@@ -18,7 +18,7 @@ namespace HolidaySearcher.Search
             var flightParams = parameters as FlightParameters;
 
             return _flights.GetData()
-                .Where(f => f.Departure == flightParams.Departure
+                .Where(f => (f.Departure == flightParams.Departure || flightParams.Departure.Equals("ANY"))
                         && f.Destination == flightParams.Destination
                         && f.DepartureDate == flightParams.Date)
                 .ToList<IHolidayComponent>();

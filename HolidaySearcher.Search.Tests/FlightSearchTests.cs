@@ -1,4 +1,4 @@
-using HolidaySearcher.Search.SearchParameters;
+﻿using HolidaySearcher.Search.SearchParameters;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -46,6 +46,27 @@ namespace HolidaySearcher.Search.Tests
             // Then
             Assert.That(flights, Is.Not.Null);
             Assert.That(flights.Count, Is.EqualTo(expectedMatches));
+        }
+
+        [Test]
+        [TestCase("ANY", "LPA", "2022-11-10", 1, 7)]
+        public void GivenADepartureRegion_WhenSearchIsCalled_ThenAllValidFlightsAreReturned(string departure, string destination, string date, int expectedMatches, int expectedId)
+        {
+            // Given
+            var fParams = new FlightParameters
+            {
+                Departure = departure,
+                Destination = destination,
+                Date = DateTime.Parse(date)
+            };
+
+            // When
+            var flights = _flightSearch.Search(fParams);
+
+            // Then
+            Assert.That(flights, Is.Not.Null);
+            Assert.That(flights.Count, Is.EqualTo(expectedMatches));
+            Assert.That(flights.First().Id, Is.EqualTo(expectedId));
         }
     }
 }
