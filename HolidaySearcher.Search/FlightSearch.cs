@@ -18,10 +18,20 @@ namespace HolidaySearcher.Search
             var flightParams = parameters as FlightParameters;
 
             return _flights.GetData()
-                .Where(f => (f.Departure == flightParams.Departure || flightParams.Departure.Equals("ANY"))
+                .Where(f => isValidDeparture(f, flightParams.Departure)
                         && f.Destination == flightParams.Destination
                         && f.DepartureDate == flightParams.Date)
                 .ToList<IHolidayComponent>();
+        }
+
+        private bool isValidDeparture(Flight f, string departure)
+        {
+            if (departure.Equals("ANY"))
+            {
+                return true;
+            }
+
+            return f.Departure.Equals(departure);
         }
     }
 }
