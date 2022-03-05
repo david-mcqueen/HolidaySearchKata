@@ -17,12 +17,12 @@ namespace HolidaySearcher.Search
             _flights = new Repository<Flight>();
         }
 
-        public IList<IHolidayComponent> Search(HolidayParameters flightParams)
+        public IList<IHolidayComponent> Search(HolidayParameters holidayParams)
         {
             return _flights.GetData()
-                .Where(f => isValidDeparture(f, flightParams.Departure)
-                        && isValidDestination(f, flightParams.Destination)
-                        && isValidDate(f, flightParams.Date))
+                .Where(f => isValidDeparture(f, holidayParams.Departure)
+                        && isValidDestination(f, holidayParams.Destination)
+                        && isValidDate(f, holidayParams.Date))
                 .OrderBy(f => f.Price)
                 .ToList<IHolidayComponent>();
         }

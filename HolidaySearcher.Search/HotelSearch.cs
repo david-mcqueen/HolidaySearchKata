@@ -10,18 +10,19 @@ namespace HolidaySearcher.Search
 {
     public class HotelSearch : ISearch
     {
-        private Repository<Hotel> _hotels{ get; set; }
+        private Repository<Hotel> _hotels { get; set; }
 
         public HotelSearch()
         {
             _hotels = new Repository<Hotel>();
         }
-        public IList<IHolidayComponent> Search(HolidayParameters hotelParams)
+
+        public IList<IHolidayComponent> Search(HolidayParameters holidayParams)
         {
             return _hotels.GetData()
-                .Where(h => isValidDate(h, hotelParams.Date)
-                        && isValidDuration(h, hotelParams.Duration)
-                        && isServicedByAirport(h, hotelParams.Destination))
+                .Where(h => isValidDate(h, holidayParams.Date)
+                        && isValidDuration(h, holidayParams.Duration)
+                        && isServicedByAirport(h, holidayParams.Destination))
                 .ToList<IHolidayComponent>();
         }
 
