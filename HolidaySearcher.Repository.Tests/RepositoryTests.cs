@@ -6,31 +6,31 @@ namespace HolidaySearcher.Repository.Tests
     public class Tests
     {
         [Test]
-        public void GivenAFlightRepository_WhenGetAvailableComponentIsCalled_ThenDataIsReturned()
+        public void GivenAFlightRepository_WhenGetAvailableComponentIsCalled_ThenAllDataIsReturned()
         {
             // Given
             var repo = new Repository<Flight>();
 
             // When
-            var component = repo.GetAvailableComponent();
+            var components = repo.GetAvailableComponent();
 
             // Then
-            Assert.That(component, Is.Not.Null);
-            Assert.That(component.Id, Is.EqualTo(1));
+            Assert.That(components, Is.Not.Null);
+            Assert.That(components.Count, Is.EqualTo(12));
         }
 
         [Test]
-        public void GivenAHotelRepository_WhenGetAvailableComponentIsCalled_ThenDataIsReturned()
+        public void GivenAHotelRepository_WhenGetAvailableComponentIsCalled_ThenAllDataIsReturned()
         {
             // Given
             var repo = new Repository<Hotel>();
 
             // When
-            var component = repo.GetAvailableComponent();
+            var components = repo.GetAvailableComponent();
 
             // Then
-            Assert.That(component, Is.Not.Null);
-            Assert.That(component.Id, Is.EqualTo(1));
+            Assert.That(components, Is.Not.Null);
+            Assert.That(components.Count, Is.EqualTo(13));
         }
     }
 }

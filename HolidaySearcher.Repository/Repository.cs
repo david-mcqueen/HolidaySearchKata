@@ -15,9 +15,9 @@ namespace HolidaySearcher.Repository
             _data = fl.Load();
         }
 
-        public IHolidayComponent GetAvailableComponent()
+        public IList<T> GetAvailableComponent()
         {
-            return _data.First();
+            return _data;
         }
     }
 }
