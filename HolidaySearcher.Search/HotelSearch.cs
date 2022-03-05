@@ -23,6 +23,7 @@ namespace HolidaySearcher.Search
                 .Where(h => isValidDate(h, holidayParams.Date)
                         && isValidDuration(h, holidayParams.Duration)
                         && isServicedByAirport(h, holidayParams.Destination))
+                .OrderBy(h => h.PricePerNight)
                 .ToList<IHolidayComponent>();
         }
 
