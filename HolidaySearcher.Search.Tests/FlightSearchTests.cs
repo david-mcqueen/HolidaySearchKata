@@ -85,5 +85,32 @@ namespace HolidaySearcher.Search.Tests
                 Assert.That(flights.Any(f => f.Id == id), Is.Not.Null);
             }
         }
+
+        private static readonly object[] _cheapestFlightTestData = {
+                new object[] { "MAN", "PMI", "2023-06-15", new List<int> { 5, 3 } },
+                new object[] { "LGW", "AGP", "2023-07-01", new List<int> { 11, 10 } },
+            };
+
+        [Test]
+        [TestCaseSource("_cheapestFlightTestData")]
+        public void GivenMultipleFlightMatches_WhenSearchIsCalled_TheCheapestFlightIsReturnedFirst(string departure, string destination, string date, List<int> expectedMatchIds)
+        {
+            // Given
+            var fParams = new FlightParameters
+            {
+                Departure = departure,
+                Destination = destination,
+                Date = DateTime.Parse(date)
+            };
+
+            // When
+            var flights = _flightSearch.Search(fParams);
+
+            // Then
+            Assert.That(flights, Is.Not.Null);
+            Assert.That(flights.Count, Is.EqualTo(expectedMatchIds.Count));
+
+            Assert.That(flights.First().Id, Is.EqualTo(expectedMatchIds.First()));
+        }
     }
 }
