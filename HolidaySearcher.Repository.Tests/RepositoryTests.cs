@@ -1,3 +1,4 @@
+using HolidaySearcher.Repository.Components;
 using NUnit.Framework;
 
 namespace HolidaySearcher.Repository.Tests
@@ -8,7 +9,7 @@ namespace HolidaySearcher.Repository.Tests
         public void GivenAFlightRepository_WhenGetAvailableComponentIsCalled_ThenDataIsReturned()
         {
             // Given
-            IRepository repo = new FlightRepository();
+            var repo = new Repository<Flight>();
 
             // When
             var component = repo.GetAvailableComponent();
@@ -22,7 +23,7 @@ namespace HolidaySearcher.Repository.Tests
         public void GivenAHotelRepository_WhenGetAvailableComponentIsCalled_ThenDataIsReturned()
         {
             // Given
-            IRepository repo = new HotelRepository();
+            var repo = new Repository<Hotel>();
 
             // When
             var component = repo.GetAvailableComponent();
