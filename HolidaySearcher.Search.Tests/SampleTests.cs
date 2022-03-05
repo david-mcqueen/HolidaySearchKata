@@ -10,7 +10,7 @@ namespace HolidaySearcher.Search.Tests
         [Test]
         [TestCase("MAN", "AGP", "2023-07-01", 7, 2, 9)]
         [TestCase("ANY LONDON", "PMI", "2023-06-15", 10, 6, 5)]
-        [TestCase("ANYWHERE", "LPA", "2022-11-10", 14, 7, 6)]
+        [TestCase("ANY", "LPA", "2022-11-10", 14, 7, 6)]
         public void GivenSampleTestCases_WhenSearchIsCalled_ThenTheBestHolidayIsReturned(string depart, string destination, string departureDate, int duration, int expectedFlightId, int expectedHotelId)
         {
             // Given
