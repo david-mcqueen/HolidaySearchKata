@@ -1,6 +1,7 @@
 ﻿using HolidaySearcher.Repository;
 using HolidaySearcher.Repository.Components;
 using HolidaySearcher.Search.SearchParameters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,8 +22,8 @@ namespace HolidaySearcher.Search
 
             return _flights.GetData()
                 .Where(f => isValidDeparture(f, flightParams.Departure)
-                        && f.Destination == flightParams.Destination
-                        && f.DepartureDate == flightParams.Date)
+                        && isValidDestination(f, flightParams.Destination)
+                        && isValidDate(f, flightParams.Date))
                 .ToList<IHolidayComponent>();
         }
 
@@ -39,6 +40,16 @@ namespace HolidaySearcher.Search
             }
 
             return f.Departure.Equals(departure);
+        }
+
+        private bool isValidDate(Flight f, DateTime date)
+        {
+            return f.DepartureDate == date;
+        }
+
+        private bool isValidDestination(Flight f, string destination)
+        {
+            return f.Destination == destination;
         }
     }
 }
