@@ -37,11 +37,11 @@ namespace HolidaySearcher.Search.Tests
         public void GivenSpecificHotelParameters_WhenSearchIsCalled_ThenTheCorrectHotelsAreReturned(string destinationAirport, string date, int duration, List<int> expectedMatchIds)
         {
             // Given
-            var hParams = new HotelParameters
+            var hParams = new HolidayParameters
             {
                 Destination = destinationAirport,
                 Duration = duration,
-                ArrivalDate = DateTime.Parse(date)
+                DepartureDate = DateTime.Parse(date)
             };
 
             // When

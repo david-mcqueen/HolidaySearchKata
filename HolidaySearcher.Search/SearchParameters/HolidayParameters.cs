@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HolidaySearcher.Search.SearchParameters
 {
-    public class HolidayParameters : ISearchParameters
+    public class HolidayParameters
     {
         public string Departure { get; set; }
         public string Destination { get; set; }

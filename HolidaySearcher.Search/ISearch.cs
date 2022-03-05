@@ -6,6 +6,6 @@ namespace HolidaySearcher.Search
 {
     public interface ISearch
     {
-        IList<IHolidayComponent> Search(ISearchParameters parameters);
+        IList<IHolidayComponent> Search(HolidayParameters parameters);
     }
 }

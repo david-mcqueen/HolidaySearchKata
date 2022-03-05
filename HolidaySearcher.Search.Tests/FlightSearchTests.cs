@@ -37,11 +37,11 @@ namespace HolidaySearcher.Search.Tests
         public void GivenSpecificFlightParameters_WhenSearchIsCalled_ThenAllValidFlightAreReturned(string departure, string destination, string date, List<int> expectedMatchIds)
         {
             // Given
-            var fParams = new FlightParameters
+            var fParams = new HolidayParameters
             {
                 Departure = departure,
                 Destination = destination,
-                Date = DateTime.Parse(date)
+                DepartureDate = DateTime.Parse(date)
             };
 
             // When
@@ -67,11 +67,11 @@ namespace HolidaySearcher.Search.Tests
         public void GivenADepartureRegion_WhenSearchIsCalled_ThenAllValidFlightsAreReturned(string departure, string destination, string date, List<int> expectedMatchIds)
         {
             // Given
-            var fParams = new FlightParameters
+            var fParams = new HolidayParameters
             {
                 Departure = departure,
                 Destination = destination,
-                Date = DateTime.Parse(date)
+                DepartureDate = DateTime.Parse(date)
             };
 
             // When
@@ -96,11 +96,11 @@ namespace HolidaySearcher.Search.Tests
         public void GivenMultipleFlightMatches_WhenSearchIsCalled_TheCheapestFlightIsReturnedFirst(string departure, string destination, string date, List<int> expectedMatchIds)
         {
             // Given
-            var fParams = new FlightParameters
+            var fParams = new HolidayParameters
             {
                 Departure = departure,
                 Destination = destination,
-                Date = DateTime.Parse(date)
+                DepartureDate = DateTime.Parse(date)
             };
 
             // When

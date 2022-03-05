@@ -16,12 +16,10 @@ namespace HolidaySearcher.Search
         {
             _hotels = new Repository<Hotel>();
         }
-        public IList<IHolidayComponent> Search(ISearchParameters parameters)
+        public IList<IHolidayComponent> Search(HolidayParameters hotelParams)
         {
-            var hotelParams = parameters as HotelParameters;
-
             return _hotels.GetData()
-                .Where(h => isValidDate(h, hotelParams.ArrivalDate)
+                .Where(h => isValidDate(h, hotelParams.DepartureDate)
                         && isValidDuration(h, hotelParams.Duration)
                         && isServicedByAirport(h, hotelParams.Destination))
                 .ToList<IHolidayComponent>();

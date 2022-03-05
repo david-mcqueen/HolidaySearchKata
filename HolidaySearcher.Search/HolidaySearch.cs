@@ -18,22 +18,8 @@ namespace HolidaySearcher.Search
 
         public Holiday Search(HolidayParameters parameters)
         {
-            var fParams = new FlightParameters
-            {
-                Date = parameters.DepartureDate,
-                Departure = parameters.Departure,
-                Destination = parameters.Destination
-            };
-
-            var hParams = new HotelParameters
-            {
-                Destination = parameters.Destination,
-                ArrivalDate = parameters.DepartureDate,
-                Duration = parameters.Duration
-            };
-
-            var flights = _flightSearch.Search(fParams);
-            var hotels = _hotelSearch.Search(hParams);
+            var flights = _flightSearch.Search(parameters);
+            var hotels = _hotelSearch.Search(parameters);
 
             return new Holiday
             {
