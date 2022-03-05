@@ -12,7 +12,7 @@ namespace HolidaySearcher.Repository.Tests
             var repo = new Repository<Flight>();
 
             // When
-            var components = repo.GetAvailableComponent();
+            var components = repo.GetData();
 
             // Then
             Assert.That(components, Is.Not.Null);
@@ -26,7 +26,7 @@ namespace HolidaySearcher.Repository.Tests
             var repo = new Repository<Hotel>();
 
             // When
-            var components = repo.GetAvailableComponent();
+            var components = repo.GetData();
 
             // Then
             Assert.That(components, Is.Not.Null);
