@@ -19,7 +19,7 @@ namespace HolidaySearcher.Search
         public IList<IHolidayComponent> Search(HolidayParameters hotelParams)
         {
             return _hotels.GetData()
-                .Where(h => isValidDate(h, hotelParams.DepartureDate)
+                .Where(h => isValidDate(h, hotelParams.Date)
                         && isValidDuration(h, hotelParams.Duration)
                         && isServicedByAirport(h, hotelParams.Destination))
                 .ToList<IHolidayComponent>();

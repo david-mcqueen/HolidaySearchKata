@@ -46,7 +46,7 @@ namespace HolidaySearcher.Search.Tests
             var hParams = new HolidayParameters
             {
                 Departure = departure,
-                DepartureDate = DateTime.Parse(departureDate),
+                Date = DateTime.Parse(departureDate),
                 Duration = duration,
                 Destination = destination
             };

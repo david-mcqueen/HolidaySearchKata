@@ -22,7 +22,7 @@ namespace HolidaySearcher.Search
             return _flights.GetData()
                 .Where(f => isValidDeparture(f, flightParams.Departure)
                         && isValidDestination(f, flightParams.Destination)
-                        && isValidDate(f, flightParams.DepartureDate))
+                        && isValidDate(f, flightParams.Date))
                 .OrderBy(f => f.Price)
                 .ToList<IHolidayComponent>();
         }

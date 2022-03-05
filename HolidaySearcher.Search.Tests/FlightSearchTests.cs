@@ -41,7 +41,7 @@ namespace HolidaySearcher.Search.Tests
             {
                 Departure = departure,
                 Destination = destination,
-                DepartureDate = DateTime.Parse(date)
+                Date = DateTime.Parse(date)
             };
 
             // When
@@ -71,7 +71,7 @@ namespace HolidaySearcher.Search.Tests
             {
                 Departure = departure,
                 Destination = destination,
-                DepartureDate = DateTime.Parse(date)
+                Date = DateTime.Parse(date)
             };
 
             // When
@@ -100,7 +100,7 @@ namespace HolidaySearcher.Search.Tests
             {
                 Departure = departure,
                 Destination = destination,
-                DepartureDate = DateTime.Parse(date)
+                Date = DateTime.Parse(date)
             };
 
             // When

@@ -41,7 +41,7 @@ namespace HolidaySearcher.Search.Tests
             {
                 Destination = destinationAirport,
                 Duration = duration,
-                DepartureDate = DateTime.Parse(date)
+                Date = DateTime.Parse(date)
             };
 
             // When
