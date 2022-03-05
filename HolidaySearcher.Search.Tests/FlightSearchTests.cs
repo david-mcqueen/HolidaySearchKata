@@ -48,9 +48,15 @@ namespace HolidaySearcher.Search.Tests
             Assert.That(flights.Count, Is.EqualTo(expectedMatches));
         }
 
+
+        private static readonly object[] _regionTestData = {
+                new object[] {"ANY", "LPA", "2022-11-10", 1, new List<int> { 7 } },
+                new object[] {"ANY LONDON", "PMI", "2023-06-15", 2, new List<int> { 4, 6 } }
+            };
+
         [Test]
-        [TestCase("ANY", "LPA", "2022-11-10", 1, 7)]
-        public void GivenADepartureRegion_WhenSearchIsCalled_ThenAllValidFlightsAreReturned(string departure, string destination, string date, int expectedMatches, int expectedId)
+        [TestCaseSource("_regionTestData")]
+        public void GivenADepartureRegion_WhenSearchIsCalled_ThenAllValidFlightsAreReturned(string departure, string destination, string date, int expectedMatches, List<int> expectedIds)
         {
             // Given
             var fParams = new FlightParameters
@@ -66,7 +72,10 @@ namespace HolidaySearcher.Search.Tests
             // Then
             Assert.That(flights, Is.Not.Null);
             Assert.That(flights.Count, Is.EqualTo(expectedMatches));
-            Assert.That(flights.First().Id, Is.EqualTo(expectedId));
+            foreach (var id in expectedIds)
+            {
+                Assert.That(flights.Any(f => f.Id == id), Is.Not.Null);
+            }
         }
     }
 }

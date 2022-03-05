@@ -9,6 +9,8 @@ namespace HolidaySearcher.Search
     public class FlightSearch : ISearch
     {
         private Repository<Flight> _flights { get; set; }
+        private List<string> _londonAirports { get; set; } = new List<string> { "LGW", "LTN" };
+
         public FlightSearch()
         {
             _flights = new Repository<Flight>();
@@ -29,6 +31,11 @@ namespace HolidaySearcher.Search
             if (departure.Equals("ANY"))
             {
                 return true;
+            }
+
+            if (departure.Equals("ANY LONDON"))
+            {
+                return _londonAirports.Contains(f.Departure);
             }
 
             return f.Departure.Equals(departure);
